@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Belmiro Bolos | Bolos caseiros em Santos - peça pelo WhatsApp</title>
+  <meta name="description" content="Bolos caseiros na Vila Belmiro, em Santos: cenoura, milho, vulcão, recheados, red velvet e mais. Veja o cardápio com preços e peça pelo WhatsApp em poucos cliques.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#7a4630">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Compartilhamento (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Belmiro Bolos">
+  <meta property="og:title" content="Belmiro Bolos | Bolos caseiros em Santos - peça pelo WhatsApp">
+  <meta property="og:description" content="Veja o cardápio com preços e peça seu bolo caseiro pelo WhatsApp em poucos cliques.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://belmirobolos.com.br/">
+  <meta property="og:url" content="https://belmirobolos.com.br/">
+  <meta property="og:image" content="https://belmirobolos.com.br/img/compartilhar.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Belmiro Bolos - bolos caseiros, peça pelo WhatsApp">
+  <meta name="twitter:image" content="https://belmirobolos.com.br/img/compartilhar.jpg">
+
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/produtos.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="pular-link" href="#cardapio">Pular para o cardápio</a>
+
+  <!-- ===== TOPO ===== -->
+  <header class="topo">
+    <div class="container topo__barra">
+      <a class="marca" href="./" aria-label="Belmiro Bolos - início">
+        <span class="marca__selo"><img class="marca__logo" src="img/utils/logo-horizontal.png" alt="Belmiro Bolos" width="480" height="199" fetchpriority="high"></span>
+        <span class="marca__slogan">Bolos caseiros<br>feitos com carinho</span>
+      </a>
+      <button type="button" class="btn-carrinho" id="btnAbrirPedido" aria-label="Ver meu pedido (0 itens)">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12L6 6Zm0 0L5 3H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.5" fill="currentColor"/><circle cx="18" cy="20" r="1.5" fill="currentColor"/></svg>
+        <span class="badge" id="contadorItens" hidden>0</span>
+      </button>
+    </div>
+
+    <div class="container busca">
+      <label for="campoBusca" class="sr-only">Qual bolo você está procurando?</label>
+      <svg class="busca__icone" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="search" id="campoBusca" class="busca__campo" placeholder="Qual bolo você está procurando?" autocomplete="off" maxlength="60" enterkeyhint="search">
+      <button type="button" class="busca__limpar" id="btnLimparBusca" aria-label="Limpar pesquisa" hidden>&times;</button>
+    </div>
+
+    <nav class="container categorias" aria-label="Categorias">
+      <div class="categorias__lista" id="listaCategorias"></div>
+    </nav>
+  </header>
+
+  <!-- ===== CARDÁPIO ===== -->
+  <main id="cardapio" class="container cardapio" tabindex="-1">
+    <div class="cardapio__cabecalho">
+      <h1 class="cardapio__titulo" id="tituloSecao">Nosso cardápio</h1>
+      <p class="cardapio__contagem" id="contagemProdutos" aria-live="polite"></p>
+    </div>
+
+    <ul class="grade-produtos" id="listaProdutos"></ul>
+
+    <div class="vazio" id="semResultados" hidden>
+      <p class="vazio__titulo">Nenhum bolo encontrado</p>
+      <p>Tente outro nome ou escolha outra categoria.</p>
+      <button type="button" class="btn btn--secundario" id="btnVerTodos">Ver todos os bolos</button>
+    </div>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <div class="rodape__col rodape__col--marca">
+        <a class="marca marca--rodape" href="./" aria-label="Belmiro Bolos - voltar ao topo">
+          <span class="marca__selo"><img class="marca__logo" src="img/utils/logo-horizontal.png" alt="Belmiro Bolos" width="480" height="199" loading="lazy"></span>
+        </a>
+        <p class="rodape__slogan" id="rodapeSlogan" hidden></p>
+      </div>
+
+      <div class="rodape__col" id="rodapeVisite" hidden>
+        <h2 class="rodape__titulo">Visite-nos</h2>
+        <ul class="rodape__lista">
+          <li id="rodapeEndereco" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <a class="rodape__link" id="rodapeMapa" href="#" target="_blank" rel="noopener noreferrer"><span></span></a>
+          </li>
+          <li id="rodapeTelefone" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.6 3.5 9 3l1.6 4.2-2 1.4a11 11 0 0 0 6.8 6.8l1.4-2L21 15l-.5 2.4a2 2 0 0 1-2 1.6A16 16 0 0 1 5 5.5a2 2 0 0 1 1.6-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <a class="rodape__link" id="rodapeTelefoneLink" href="#"><span></span></a>
+          </li>
+          <li id="rodapeHorario" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rodape__col">
+        <h2 class="rodape__titulo">Fale com a gente</h2>
+        <div class="rodape__sociais">
+          <a class="social social--whatsapp" id="rodapeWhatsapp" href="#" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5 0a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a class="social social--instagram" id="rodapeInstagram" href="#" target="_blank" rel="noopener noreferrer" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
+            <span></span>
+          </a>
+          <a class="social social--facebook" id="rodapeFacebook" href="#" target="_blank" rel="noopener noreferrer" hidden>
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a21 21 0 0 0-2.4-.1c-2.3 0-3.9 1.4-3.9 4v2.2H7.7v3h2.6V21h3.2Z"/></svg>
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rodape__base">
+      <div class="container">
+        <p id="rodapeCopy"></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÃO FLUTUANTE DO WHATSAPP ===== -->
+  <a class="whats-flutuante" id="whatsFlutuante" href="#" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
+    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5 0a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+    <span class="whats-flutuante__rotulo" aria-hidden="true">Fale conosco</span>
+  </a>
+
+  <!-- ===== BARRA FLUTUANTE DO PEDIDO (celular) ===== -->
+  <div class="barra-pedido" id="barraPedido" hidden>
+    <button type="button" class="barra-pedido__botao" id="btnBarraPedido">
+      <span class="barra-pedido__qtd" id="barraQtd">0 itens</span>
+      <span>Ver pedido</span>
+      <span class="barra-pedido__total" id="barraTotal">R$ 0,00</span>
+    </button>
+  </div>
+
+  <!-- ===== MODAL: DETALHES DO PRODUTO ===== -->
+  <dialog class="modal modal--produto" id="modalProduto" aria-labelledby="produtoNome">
+    <button type="button" class="modal__fechar" data-fechar aria-label="Fechar">&times;</button>
+    <img class="produto-detalhe__foto" id="produtoFoto" src="" alt="" width="800" height="600">
+    <div class="produto-detalhe__corpo">
+      <p class="produto-detalhe__categoria" id="produtoCategoria"></p>
+      <h2 class="produto-detalhe__nome" id="produtoNome"></h2>
+      <p class="produto-detalhe__descricao" id="produtoDetalhes"></p>
+      <p class="produto-detalhe__preco" id="produtoPreco"></p>
+      <p class="selo-indisponivel" id="produtoIndisponivel" hidden>Indisponível no momento</p>
+      <div class="produto-detalhe__acoes" id="produtoAcoes">
+        <div class="seletor-qtd" role="group" aria-label="Quantidade">
+          <button type="button" class="seletor-qtd__btn" id="produtoMenos" aria-label="Diminuir quantidade">&minus;</button>
+          <output class="seletor-qtd__valor" id="produtoQtd" aria-live="polite">1</output>
+          <button type="button" class="seletor-qtd__btn" id="produtoMais" aria-label="Aumentar quantidade">+</button>
+        </div>
+        <button type="button" class="btn btn--primario btn--bloco" id="produtoAdicionar">Adicionar ao pedido</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===== MODAL: PEDIDO (carrinho -> dados -> enviado) ===== -->
+  <dialog class="modal modal--pedido" id="modalPedido" aria-labelledby="pedidoTitulo">
+    <div class="pedido__topo">
+      <button type="button" class="pedido__voltar" id="btnVoltarEtapa" aria-label="Voltar" hidden>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <h2 class="pedido__titulo" id="pedidoTitulo">Meu pedido</h2>
+      <button type="button" class="modal__fechar modal__fechar--estatico" data-fechar aria-label="Fechar">&times;</button>
+    </div>
+
+    <ol class="etapas" aria-label="Etapas do pedido">
+      <li class="etapas__item" data-etapa-indicador="carrinho">Pedido</li>
+      <li class="etapas__item" data-etapa-indicador="dados">Seus dados</li>
+      <li class="etapas__item" data-etapa-indicador="enviado">WhatsApp</li>
+    </ol>
+
+    <!-- Etapa 1: carrinho -->
+    <section class="pedido__etapa" data-etapa="carrinho">
+      <ul class="lista-carrinho" id="listaCarrinho"></ul>
+      <div class="vazio vazio--compacto" id="carrinhoVazio" hidden>
+        <p class="vazio__titulo">Seu pedido está vazio</p>
+        <p>Adicione bolos do cardápio para continuar.</p>
+        <button type="button" class="btn btn--secundario" data-fechar>Ver cardápio</button>
+      </div>
+      <div class="pedido__rodape" id="carrinhoRodape">
+        <div class="pedido__total"><span>Total</span><strong id="carrinhoTotal">R$ 0,00</strong></div>
+        <button type="button" class="btn btn--primario btn--bloco" id="btnContinuar">Continuar pedido</button>
+      </div>
+    </section>
+
+    <!-- Etapa 2: dados do cliente -->
+    <section class="pedido__etapa" data-etapa="dados" hidden>
+      <form class="formulario" id="formDados" novalidate>
+        <div class="campo">
+          <label for="clienteNome">Nome <span aria-hidden="true">*</span></label>
+          <input id="clienteNome" name="nome" type="text" autocomplete="name" maxlength="60" required>
+          <p class="campo__erro" id="erroNome" aria-live="polite"></p>
+        </div>
+        <div class="campo">
+          <label for="clienteTelefone">Telefone / WhatsApp <span aria-hidden="true">*</span></label>
+          <input id="clienteTelefone" name="telefone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="15" placeholder="(00) 00000-0000" required>
+          <p class="campo__erro" id="erroTelefone" aria-live="polite"></p>
+        </div>
+        <fieldset class="campo campo--opcoes">
+          <legend>Entrega ou retirada? <span aria-hidden="true">*</span></legend>
+          <div class="opcoes">
+            <label class="opcao">
+              <input type="radio" name="forma" value="Entrega" required>
+              <span class="opcao__caixa">
+                <strong>Entrega</strong>
+                <small>Levamos até você</small>
+              </span>
+            </label>
+            <label class="opcao">
+              <input type="radio" name="forma" value="Retirada">
+              <span class="opcao__caixa">
+                <strong>Retirada</strong>
+                <small>Busco na loja</small>
+              </span>
+            </label>
+          </div>
+          <p class="campo__erro" id="erroForma" aria-live="polite"></p>
+        </fieldset>
+        <div class="campo" id="campoEndereco" hidden>
+          <label for="clienteEndereco">Endereço de entrega <span aria-hidden="true">*</span></label>
+          <textarea id="clienteEndereco" name="endereco" rows="2" autocomplete="street-address" maxlength="200" placeholder="Rua, número, bairro e complemento"></textarea>
+          <p class="campo__erro" id="erroEndereco" aria-live="polite"></p>
+        </div>
+        <div class="campo">
+          <label for="clienteObs">Observações <small>(opcional)</small></label>
+          <textarea id="clienteObs" name="observacoes" rows="3" maxlength="300" placeholder="Ex.: data e horário desejados, mensagem no bolo..."></textarea>
+        </div>
+
+        <div class="pedido__rodape">
+          <div class="pedido__total"><span>Total</span><strong id="dadosTotal">R$ 0,00</strong></div>
+          <button type="submit" class="btn btn--whatsapp btn--bloco">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5 0a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Enviar pedido pelo WhatsApp
+          </button>
+          <p class="aviso-confirmacao">O pedido será confirmado pelo atendente no WhatsApp.</p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Etapa 3: enviado -->
+    <section class="pedido__etapa pedido__etapa--enviado" data-etapa="enviado" hidden>
+      <div class="enviado__icone" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="40" height="40"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="enviado__titulo">Quase lá!</h3>
+      <p>Abrimos o WhatsApp da Belmiro Bolos com seu pedido pronto. É só <strong>enviar a mensagem</strong> por lá.</p>
+      <p class="enviado__nota">A disponibilidade e a confirmação do pedido serão feitas pelo nosso atendente.</p>
+      <div class="enviado__acoes">
+        <a class="btn btn--whatsapp btn--bloco" id="linkReabrirWhatsapp" href="#" target="_blank" rel="noopener noreferrer">O WhatsApp não abriu? Toque aqui</a>
+        <button type="button" class="btn btn--secundario btn--bloco" id="btnNovoPedido">Fazer um novo pedido</button>
+      </div>
+    </section>
+  </dialog>
+
+  <!-- ===== AVISO (toast) ===== -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- ===== MODELOS (templates) usados pelo JavaScript ===== -->
+  <template id="modeloProduto">
+    <li class="produto">
+      <button type="button" class="produto__abrir" data-acao="detalhes">
+        <span class="produto__foto-wrap">
+          <img class="produto__foto" src="" alt="" width="400" height="300" loading="lazy" decoding="async">
+          <span class="produto__selo" hidden></span>
+        </span>
+        <span class="produto__info">
+          <span class="produto__nome"></span>
+          <span class="produto__descricao"></span>
+        </span>
+      </button>
+      <div class="produto__rodape">
+        <span class="produto__preco"></span>
+        <button type="button" class="btn btn--primario btn--pequeno" data-acao="adicionar">Adicionar ao pedido</button>
+        <span class="selo-indisponivel" hidden>Indisponível no momento</span>
+      </div>
+    </li>
+  </template>
+
+  <template id="modeloItemCarrinho">
+    <li class="item-carrinho">
+      <img class="item-carrinho__foto" src="" alt="" width="72" height="54" loading="lazy" decoding="async">
+      <div class="item-carrinho__info">
+        <p class="item-carrinho__nome"></p>
+        <p class="item-carrinho__unitario"></p>
+      </div>
+      <div class="item-carrinho__controles">
+        <div class="seletor-qtd seletor-qtd--pequeno" role="group">
+          <button type="button" class="seletor-qtd__btn" data-acao="diminuir">&minus;</button>
+          <span class="seletor-qtd__valor" data-qtd></span>
+          <button type="button" class="seletor-qtd__btn" data-acao="aumentar">+</button>
+        </div>
+        <p class="item-carrinho__subtotal"></p>
+      </div>
+      <button type="button" class="item-carrinho__remover" data-acao="remover">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </li>
+  </template>
+
+  <noscript>
+    <p class="noscript">Para fazer seu pedido, ative o JavaScript do navegador.</p>
+  </noscript>
+</body>
+</html>
