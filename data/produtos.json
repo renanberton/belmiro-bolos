@@ -1,134 +1,1752 @@
 [
   {
-    "id": "bolo-cenoura",
+    "id": "bolo-de-banana-com-canela",
+    "nome": "Bolo de Banana com Canela",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-banana-com-canela.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-cenoura",
     "nome": "Bolo de Cenoura",
-    "descricao": "Massa fofinha e úmida, feita com cenouras frescas.",
-    "detalhes": "O clássico da casa. Massa leve e aerada, feita com cenouras frescas batidas na hora. Ideal para o café da tarde. Aproximadamente 1 kg, serve de 10 a 12 fatias.",
-    "preco": 35,
-    "categoria": "tradicionais",
-    "foto": "img/produtos/bolo-cenoura-mv1t1b3z.webp",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-cenoura.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-de-chocolate",
+    "nome": "Bolo de Chocolate",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-chocolate.webp",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "bolo-milho",
-    "nome": "Bolo de Milho",
-    "descricao": "Cremoso, feito com milho verde de verdade.",
-    "detalhes": "Receita de família, cremoso por dentro e douradinho por fora, feito com milho verde fresco. Aproximadamente 1 kg, serve de 10 a 12 fatias.",
-    "preco": 35,
-    "categoria": "tradicionais",
-    "foto": "img/produtos/bolo-milho.svg",
+    "id": "bolo-de-coco",
+    "nome": "Bolo de Coco",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-coco.webp",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "bolo-fuba",
-    "nome": "Bolo de Fubá com Goiabada",
-    "descricao": "Fubá cremoso com pedacinhos de goiabada.",
-    "detalhes": "Bolo de fubá cremoso com cubinhos de goiabada que derretem no forno. Aproximadamente 1 kg, serve de 10 a 12 fatias.",
-    "preco": 38,
-    "categoria": "tradicionais",
-    "foto": "img/produtos/bolo-fuba.svg",
+    "id": "bolo-chococo",
+    "nome": "Bolo Chococo",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-chococo.webp",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "bolo-laranja",
+    "id": "bolo-formigueiro",
+    "nome": "Bolo Formigueiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-formigueiro.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-frape",
+    "nome": "Bolo Frapê",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-frape.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-fuba-com-coco",
+    "nome": "Bolo de Fubá com Coco",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-fuba-com-coco.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-fuba-com-erva-doce",
+    "nome": "Bolo de Fubá com Erva-Doce",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-fuba-com-erva-doce.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-fuba-com-laranja",
+    "nome": "Bolo de Fubá com Laranja",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-fuba-com-laranja.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-fuba-bom-bocado",
+    "nome": "Bolo de Fubá Bom-Bocado",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-de-fuba-tradicional",
+    "nome": "Bolo de Fubá Tradicional",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-iogurte",
+    "nome": "Bolo de Iogurte",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-iogurte.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-laranja",
     "nome": "Bolo de Laranja",
-    "descricao": "Massa cítrica e perfumada, com calda de laranja.",
-    "detalhes": "Feito com suco e raspas de laranja natural, finalizado com uma calda leve e brilhante. Aproximadamente 1 kg, serve de 10 a 12 fatias.",
-    "preco": 36,
-    "categoria": "tradicionais",
-    "foto": "img/produtos/bolo-laranja.svg",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-laranja.webp",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "cenoura-chocolate",
-    "nome": "Cenoura com Chocolate",
-    "descricao": "Nosso bolo de cenoura com generosa cobertura de chocolate.",
-    "detalhes": "O bolo de cenoura mais pedido da casa, coberto com uma camada generosa de chocolate cremoso que endurece levemente por cima. Aproximadamente 1,2 kg.",
-    "preco": 42,
-    "categoria": "com-cobertura",
-    "foto": "img/produtos/cenoura-chocolate.svg",
+    "id": "bolo-de-maca-com-canela",
+    "nome": "Bolo de Maçã com Canela",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-maca-com-canela.webp",
     "disponivel": true,
-    "destaque": "Mais pedido"
+    "destaque": "Sem lactose"
   },
   {
-    "id": "formigueiro",
-    "nome": "Formigueiro com Cobertura",
-    "descricao": "Massa com granulado e cobertura de brigadeiro.",
-    "detalhes": "Massa fofinha salpicada de chocolate granulado, finalizada com cobertura de brigadeiro. Aproximadamente 1,2 kg.",
-    "preco": 42,
-    "categoria": "com-cobertura",
-    "foto": "img/produtos/formigueiro.svg",
+    "id": "bolo-de-milho-cremoso",
+    "nome": "Bolo de Milho Cremoso",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-milho-cremoso.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-de-milho-da-fazenda",
+    "nome": "Bolo de Milho da Fazenda",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 30,
+    "categoria": "bolos-caseiros",
+    "foto": "img/produtos/bolo-de-milho-da-fazenda.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-de-aipim",
+    "nome": "Bolo de Aipim",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-aipim.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-de-ameixa",
+    "nome": "Bolo de Ameixa",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "vulcao-chocolate",
-    "nome": "Vulcão de Chocolate",
-    "descricao": "Bolo de chocolate transbordando brigadeiro cremoso.",
-    "detalhes": "Bolo de chocolate com o centro recheado de brigadeiro cremoso, que transborda pelas laterais. Acompanha saquinho extra de calda. Aproximadamente 1,5 kg.",
+    "id": "bolo-de-banana-com-passas",
+    "nome": "Bolo de Banana com Passas",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolotone",
+    "nome": "Bolotone",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolotone.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "cacarola-italiana",
+    "nome": "Caçarola Italiana",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/cacarola-italiana.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-cafe",
+    "nome": "Bolo de Café",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-cenoura-com-gotas-de-chocolate",
+    "nome": "Bolo de Cenoura com Gotas de Chocolate",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-cenoura-com-gotas-de-chocolate.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "frape-de-cenoura",
+    "nome": "Frapê de Cenoura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/frape-de-cenoura.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "frape-de-laranja",
+    "nome": "Frapê de Laranja",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "frape-de-limao",
+    "nome": "Frapê de Limão",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "frape-de-maracuja",
+    "nome": "Frapê de Maracujá",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-fuba-com-goiabada",
+    "nome": "Bolo de Fubá com Goiabada",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-fuba-com-goiabada.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-iogurte-com-limao",
+    "nome": "Bolo de Iogurte com Limão",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-iogurte-com-limao.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-napolitano",
+    "nome": "Bolo Napolitano",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-pacoca",
+    "nome": "Bolo de Paçoca",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-pamonha",
+    "nome": "Bolo de Pamonha",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 32,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-pamonha.webp",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "bem-casado",
+    "nome": "Bem Casado",
+    "descricao": "Disponível nos tamanhos normal e grande.",
+    "detalhes": "",
+    "preco": 40,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Normal",
+        "preco": 40
+      },
+      {
+        "nome": "Grande",
+        "preco": 80
+      }
+    ]
+  },
+  {
+    "id": "bolo-de-churros",
+    "nome": "Bolo de Churros",
+    "descricao": "Disponível nos tamanhos normal e grande.",
+    "detalhes": "",
+    "preco": 40,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-churros.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Normal",
+        "preco": 40
+      },
+      {
+        "nome": "Grande",
+        "preco": 80
+      }
+    ]
+  },
+  {
+    "id": "bolo-de-nozes-com-damasco",
+    "nome": "Bolo de Nozes com Damasco",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 40,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-nozes-com-damasco.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-abacaxi-com-coco-caramelizado",
+    "nome": "Bolo de Abacaxi com Coco Caramelizado",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 42,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-de-abacaxi-com-coco-caramelizado.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bem-casado-com-nutella",
+    "nome": "Bem Casado com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bem-casado-com-nutella.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bem-casado-com-ameixa",
+    "nome": "Bem Casado com Ameixa",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-sonho",
+    "nome": "Bolo Sonho",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-maca-com-castanha",
+    "nome": "Bolo de Maçã com Castanha",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 46,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "queijadinha-sem-parmesao",
+    "nome": "Queijadinha sem Parmesão",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 27,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "queijadinha-com-parmesao",
+    "nome": "Queijadinha com Parmesão",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 29,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "bolo-rabanada",
+    "nome": "Bolo Rabanada",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-especiais",
+    "foto": "img/produtos/bolo-rabanada.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-de-napolitano-com-nutella",
+    "nome": "Vulcão de Napolitano com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 72,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-cobertura-e-vulcao-de-nutella",
+    "nome": "Bolo de Cobertura e Vulcão de Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 85,
+    "categoria": "bolos-especiais",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-cenoura-com-cobertura",
+    "nome": "Bolo de Cenoura com Cobertura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-de-cenoura-com-cobertura.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-chocolate-com-cobertura",
+    "nome": "Bolo de Chocolate com Cobertura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-de-chocolate-com-cobertura.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-coco-molhado",
+    "nome": "Bolo de Coco Molhado",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-de-coco-molhado.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-iogurte-com-leite-ninho",
+    "nome": "Bolo de Iogurte com Leite Ninho",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-de-iogurte-com-leite-ninho.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-iogurte-com-frutas-vermelhas",
+    "nome": "Bolo de Iogurte com Frutas Vermelhas",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-de-iogurte-com-frutas-vermelhas.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-limao-com-cobertura",
+    "nome": "Bolo de Limão com Cobertura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-de-limao-com-cobertura.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-maracuja-com-cobertura",
+    "nome": "Bolo de Maracujá com Cobertura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-pacoca-com-cobertura",
+    "nome": "Bolo de Paçoca com Cobertura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 43,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-de-pacoca-com-cobertura.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-danette",
+    "nome": "Bolo Danette",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-ninho-cremoso",
+    "nome": "Bolo Ninho Cremoso",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-ninho-cremoso.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-ouro-branco",
+    "nome": "Bolo Ouro Branco",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-ninho-cremoso-com-nutella",
+    "nome": "Bolo Ninho Cremoso com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-banana-com-cobertura",
+    "nome": "Bolo de Banana com Cobertura",
+    "descricao": "",
+    "detalhes": "",
     "preco": 55,
-    "categoria": "vulcao",
-    "foto": "img/produtos/vulcao-chocolate.svg",
-    "disponivel": true,
-    "destaque": "Novidade"
-  },
-  {
-    "id": "vulcao-ninho",
-    "nome": "Vulcão de Ninho",
-    "descricao": "Massa branca com creme de leite Ninho transbordando.",
-    "detalhes": "Massa branca fofinha com creme de leite Ninho transbordando pelas laterais. Acompanha saquinho extra de creme. Aproximadamente 1,5 kg.",
-    "preco": 58,
-    "categoria": "vulcao",
-    "foto": "img/produtos/vulcao-ninho.svg",
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "recheado-prestigio",
-    "nome": "Recheado Prestígio",
-    "descricao": "Chocolate com recheio cremoso de coco.",
-    "detalhes": "Massa de chocolate com recheio cremoso de coco e cobertura de ganache. Aproximadamente 1,5 kg, serve de 12 a 15 fatias.",
+    "id": "bolo-com-cobertura-de-ovomaltine",
+    "nome": "Bolo com Cobertura de Ovomaltine",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-com-cobertura-de-ovomaltine.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-com-cobertura-de-brigadeiro",
+    "nome": "Bolo com Cobertura de Brigadeiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-com-cobertura-de-cafe",
+    "nome": "Bolo com Cobertura de Café",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-com-cobertura",
+    "foto": "img/produtos/bolo-com-cobertura-de-cafe.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-com-cobertura-bicho-de-pe",
+    "nome": "Bolo com Cobertura Bicho de Pé",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-napolitano-com-cobertura",
+    "nome": "Bolo Napolitano com Cobertura",
+    "descricao": "",
+    "detalhes": "",
     "preco": 65,
-    "categoria": "recheados",
-    "foto": "img/produtos/recheado-prestigio.svg",
+    "categoria": "bolos-com-cobertura",
+    "foto": "",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "recheado-morango",
-    "nome": "Recheado de Morango",
-    "descricao": "Massa branca, creme de baunilha e morangos frescos.",
-    "detalhes": "Massa branca intercalada com creme de baunilha e morangos frescos selecionados. Aproximadamente 1,5 kg, serve de 12 a 15 fatias.",
-    "preco": 70,
-    "categoria": "recheados",
-    "foto": "img/produtos/recheado-morango.svg",
+    "id": "vulcao-de-cenoura",
+    "nome": "Vulcão de Cenoura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 57,
+    "categoria": "bolos-vulcao",
+    "foto": "img/produtos/vulcao-de-cenoura.webp",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "red-velvet",
-    "nome": "Red Velvet",
-    "descricao": "Massa aveludada com creme de cream cheese.",
-    "detalhes": "Massa vermelha aveludada com recheio e cobertura de creme de cream cheese. Aproximadamente 1,8 kg, serve de 15 a 18 fatias.",
-    "preco": 89,
-    "categoria": "especiais",
-    "foto": "img/produtos/red-velvet.svg",
+    "id": "vulcao-de-chocolate",
+    "nome": "Vulcão de Chocolate",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 57,
+    "categoria": "bolos-vulcao",
+    "foto": "img/produtos/vulcao-de-chocolate.webp",
     "disponivel": true,
     "destaque": ""
   },
   {
-    "id": "nozes-doce-de-leite",
-    "nome": "Nozes com Doce de Leite",
-    "descricao": "Massa de nozes com recheio de doce de leite.",
-    "detalhes": "Massa amanteigada com nozes, recheio de doce de leite artesanal e nozes caramelizadas por cima. Aproximadamente 1,8 kg.",
-    "preco": 95,
-    "categoria": "especiais",
-    "foto": "img/produtos/nozes-doce-de-leite.svg",
-    "disponivel": false,
+    "id": "vulcao-de-frutas-vermelhas",
+    "nome": "Vulcão de Frutas Vermelhas",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 57,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
     "destaque": ""
+  },
+  {
+    "id": "vulcao-de-limao",
+    "nome": "Vulcão de Limão",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 57,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-de-maracuja",
+    "nome": "Vulcão de Maracujá",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 57,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-de-ninho",
+    "nome": "Vulcão de Ninho",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 57,
+    "categoria": "bolos-vulcao",
+    "foto": "img/produtos/vulcao-de-ninho.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-de-pacoca",
+    "nome": "Vulcão de Paçoca",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 57,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-brigadeiro",
+    "nome": "Vulcão Especial de Brigadeiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-brigadeiro-com-nutella",
+    "nome": "Vulcão Especial de Brigadeiro com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-cenoura-com-nutella",
+    "nome": "Vulcão Especial de Cenoura com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-chocolate-com-nutella",
+    "nome": "Vulcão Especial de Chocolate com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-limao-com-nutella",
+    "nome": "Vulcão Especial de Limão com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-maracuja-com-nutella",
+    "nome": "Vulcão Especial de Maracujá com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-ninho-com-frutas-vermelhas",
+    "nome": "Vulcão Especial de Ninho com Frutas Vermelhas",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "img/produtos/vulcao-especial-de-ninho-com-frutas-vermelhas.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-ninho-com-nutella",
+    "nome": "Vulcão Especial de Ninho com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "img/produtos/vulcao-especial-de-ninho-com-nutella.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-pacoca-com-nutella",
+    "nome": "Vulcão Especial de Paçoca com Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "img/produtos/vulcao-especial-de-pacoca-com-nutella.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "vulcao-especial-de-prestigio",
+    "nome": "Vulcão Especial de Prestígio",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "bolos-vulcao",
+    "foto": "img/produtos/vulcao-especial-de-prestigio.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "red-velvet-com-morango",
+    "nome": "Red Velvet com Morango",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "linha-encanto",
+    "foto": "img/produtos/red-velvet-com-morango.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "brigadeiro-com-morango",
+    "nome": "Brigadeiro com Morango",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "linha-encanto",
+    "foto": "img/produtos/brigadeiro-com-morango.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "ninho-com-morango",
+    "nome": "Ninho com Morango",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 65,
+    "categoria": "linha-encanto",
+    "foto": "img/produtos/ninho-com-morango.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-recheado-de-abacaxi-com-coco",
+    "nome": "Bolo Recheado de Abacaxi com Coco",
+    "descricao": "Disponível nos tamanhos pequeno e grande.",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-recheados",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequeno",
+        "preco": 55
+      },
+      {
+        "nome": "Grande",
+        "preco": 110
+      }
+    ]
+  },
+  {
+    "id": "bolo-recheado-de-brigadeiro",
+    "nome": "Bolo Recheado de Brigadeiro",
+    "descricao": "Disponível nos tamanhos pequeno e grande.",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-recheados",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequeno",
+        "preco": 55
+      },
+      {
+        "nome": "Grande",
+        "preco": 110
+      }
+    ]
+  },
+  {
+    "id": "bolo-recheado-de-prestigio",
+    "nome": "Bolo Recheado de Prestígio",
+    "descricao": "Disponível nos tamanhos pequeno e grande.",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-recheados",
+    "foto": "img/produtos/bolo-recheado-de-prestigio.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequeno",
+        "preco": 55
+      },
+      {
+        "nome": "Grande",
+        "preco": 110
+      }
+    ]
+  },
+  {
+    "id": "meio-a-meio-ninho-com-brigadeiro",
+    "nome": "Meio a Meio: Ninho com Brigadeiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-meio-a-meio",
+    "foto": "img/produtos/meio-a-meio-ninho-com-brigadeiro.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "meio-a-meio-limao-com-brigadeiro",
+    "nome": "Meio a Meio: Limão com Brigadeiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-meio-a-meio",
+    "foto": "img/produtos/meio-a-meio-limao-com-brigadeiro.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "meio-a-meio-bicho-de-pe-com-brigadeiro",
+    "nome": "Meio a Meio: Bicho de Pé com Brigadeiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-meio-a-meio",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "meio-a-meio-maracuja-com-brigadeiro",
+    "nome": "Meio a Meio: Maracujá com Brigadeiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "bolos-meio-a-meio",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "piscininha-simples",
+    "nome": "Piscininha Simples",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 36,
+    "categoria": "bolos-piscininha",
+    "foto": "img/produtos/piscininha-simples.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "piscininha-especial",
+    "nome": "Piscininha Especial",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "bolos-piscininha",
+    "foto": "img/produtos/piscininha-especial.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "pe-de-moca",
+    "nome": "Pé de Moça",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "bolos-piscininha",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "integral-de-banana-com-passas",
+    "nome": "Integral de Banana com Passas",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-integrais",
+    "foto": "img/produtos/integral-de-banana-com-passas.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "integral-de-maca-com-passas",
+    "nome": "Integral de Maçã com Passas",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-integrais",
+    "foto": "img/produtos/integral-de-maca-com-passas.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "integral-de-banana-com-nozes",
+    "nome": "Integral de Banana com Nozes",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 42,
+    "categoria": "bolos-integrais",
+    "foto": "img/produtos/integral-de-banana-com-nozes.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "integral-de-maca-com-nozes",
+    "nome": "Integral de Maçã com Nozes",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 42,
+    "categoria": "bolos-integrais",
+    "foto": "img/produtos/integral-de-maca-com-nozes.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-diet-de-chocolate",
+    "nome": "Bolo Diet de Chocolate",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-diet",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-diet-de-banana",
+    "nome": "Bolo Diet de Banana",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-diet",
+    "foto": "img/produtos/bolo-diet-de-banana.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-diet-de-laranja",
+    "nome": "Bolo Diet de Laranja",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-diet",
+    "foto": "img/produtos/bolo-diet-de-laranja.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-diet-de-limao",
+    "nome": "Bolo Diet de Limão",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-diet",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-diet-de-maca",
+    "nome": "Bolo Diet de Maçã",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 37,
+    "categoria": "bolos-diet",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "bolo-diet-de-cenoura",
+    "nome": "Bolo Diet de Cenoura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 35,
+    "categoria": "bolos-diet",
+    "foto": "img/produtos/bolo-diet-de-cenoura.webp",
+    "disponivel": true,
+    "destaque": "Sem lactose"
+  },
+  {
+    "id": "baby-caseiro",
+    "nome": "Baby Caseiro",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 20,
+    "categoria": "bolos-baby",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "baby-especial",
+    "nome": "Baby Especial",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 23,
+    "categoria": "bolos-baby",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "baby-integral",
+    "nome": "Baby Integral",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 25,
+    "categoria": "bolos-baby",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "baby-cobertura",
+    "nome": "Baby Cobertura",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 31,
+    "categoria": "bolos-baby",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "baby-vulcao-tradicional",
+    "nome": "Baby Vulcão Tradicional",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 34,
+    "categoria": "bolos-baby",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "baby-vulcao-nutella",
+    "nome": "Baby Vulcão Nutella",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 36,
+    "categoria": "bolos-baby",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-pote-tradicional",
+    "nome": "Bolo de Pote Tradicional",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 16,
+    "categoria": "bolos-de-pote",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-de-pote-especial",
+    "nome": "Bolo de Pote Especial",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 18,
+    "categoria": "bolos-de-pote",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "cuca-de-banana",
+    "nome": "Cuca de Banana",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-e-cucas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 59
+      }
+    ]
+  },
+  {
+    "id": "cuca-de-goiabada",
+    "nome": "Cuca de Goiabada",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-e-cucas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 59
+      }
+    ]
+  },
+  {
+    "id": "cuca-de-maca",
+    "nome": "Cuca de Maçã",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-e-cucas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 59
+      }
+    ]
+  },
+  {
+    "id": "torta-caramelizada-de-abacaxi",
+    "nome": "Torta Caramelizada de Abacaxi",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-e-cucas",
+    "foto": "img/produtos/torta-caramelizada-de-abacaxi.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 59
+      }
+    ]
+  },
+  {
+    "id": "torta-caramelizada-de-banana",
+    "nome": "Torta Caramelizada de Banana",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-e-cucas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 59
+      }
+    ]
+  },
+  {
+    "id": "torta-caramelizada-de-maca",
+    "nome": "Torta Caramelizada de Maçã",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-e-cucas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 59
+      }
+    ]
+  },
+  {
+    "id": "torta-caramelizada-mista-2-sabores",
+    "nome": "Torta Caramelizada Mista (2 sabores)",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-e-cucas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 59
+      }
+    ]
+  },
+  {
+    "id": "pudim-de-leite",
+    "nome": "Pudim de Leite",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 45,
+    "categoria": "sobremesas",
+    "foto": "img/produtos/pudim-de-leite.webp",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "pudim-de-chocolate",
+    "nome": "Pudim de Chocolate",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 45,
+    "categoria": "sobremesas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "gelatina-mosaico",
+    "nome": "Gelatina Mosaico",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "sobremesas",
+    "foto": "img/produtos/gelatina-mosaico.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "pudim-ninho-com-frutas-vermelhas",
+    "nome": "Pudim Ninho com Frutas Vermelhas",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "sobremesas",
+    "foto": "img/produtos/pudim-ninho-com-frutas-vermelhas.webp",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "pudim-de-queijadinha",
+    "nome": "Pudim de Queijadinha",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 47,
+    "categoria": "sobremesas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "manjar-grande",
+    "nome": "Manjar Grande",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 47,
+    "categoria": "sobremesas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "pudim-de-tapioca",
+    "nome": "Pudim de Tapioca",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 47,
+    "categoria": "sobremesas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "bolo-pudim-de-abacaxi",
+    "nome": "Bolo Pudim de Abacaxi",
+    "descricao": "",
+    "detalhes": "",
+    "preco": 55,
+    "categoria": "sobremesas",
+    "foto": "",
+    "disponivel": true,
+    "destaque": ""
+  },
+  {
+    "id": "bolo-salgado-de-queijo-tradicional",
+    "nome": "Bolo Salgado de Queijo Tradicional",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 33,
+    "categoria": "bolos-salgados",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "bolo-salgado-de-queijo-com-azeitona",
+    "nome": "Bolo Salgado de Queijo com Azeitona",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 35,
+    "categoria": "bolos-salgados",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "bolo-salgado-de-queijo-com-calabresa",
+    "nome": "Bolo Salgado de Queijo com Calabresa",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 35,
+    "categoria": "bolos-salgados",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "bolo-salgado-de-queijo-com-brocolis-e-bacon",
+    "nome": "Bolo Salgado de Queijo com Brócolis e Bacon",
+    "descricao": "",
+    "detalhes": "Preparado sem a adição de ingredientes que contenham glúten, porém produzido em ambiente compartilhado, podendo haver contaminação cruzada. Não recomendado para pessoas com doença celíaca.",
+    "preco": 35,
+    "categoria": "bolos-salgados",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "Sem glúten"
+  },
+  {
+    "id": "torta-de-brocolis-com-bacon",
+    "nome": "Torta de Brócolis com Bacon",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 78
+      }
+    ]
+  },
+  {
+    "id": "torta-de-calabresa",
+    "nome": "Torta de Calabresa",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "img/produtos/torta-de-calabresa.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 78
+      }
+    ]
+  },
+  {
+    "id": "torta-de-frango",
+    "nome": "Torta de Frango",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "img/produtos/torta-de-frango.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 78
+      }
+    ]
+  },
+  {
+    "id": "torta-de-palmito",
+    "nome": "Torta de Palmito",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "img/produtos/torta-de-palmito.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 78
+      }
+    ]
+  },
+  {
+    "id": "torta-de-escarola",
+    "nome": "Torta de Escarola",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 78
+      }
+    ]
+  },
+  {
+    "id": "torta-de-abobrinha",
+    "nome": "Torta de Abobrinha",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 39,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 39
+      },
+      {
+        "nome": "Grande",
+        "preco": 78
+      }
+    ]
+  },
+  {
+    "id": "torta-de-carne-seca",
+    "nome": "Torta de Carne Seca",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "img/produtos/torta-de-carne-seca.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 45
+      },
+      {
+        "nome": "Grande",
+        "preco": 90
+      }
+    ]
+  },
+  {
+    "id": "torta-de-costela",
+    "nome": "Torta de Costela",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 45
+      },
+      {
+        "nome": "Grande",
+        "preco": 90
+      }
+    ]
+  },
+  {
+    "id": "torta-portuguesa",
+    "nome": "Torta Portuguesa",
+    "descricao": "Disponível nos tamanhos pequena e grande.",
+    "detalhes": "",
+    "preco": 45,
+    "categoria": "tortas-salgadas-com-catupiry",
+    "foto": "img/produtos/torta-portuguesa.webp",
+    "disponivel": true,
+    "destaque": "",
+    "tamanhos": [
+      {
+        "nome": "Pequena",
+        "preco": 45
+      },
+      {
+        "nome": "Grande",
+        "preco": 90
+      }
+    ]
   }
 ]

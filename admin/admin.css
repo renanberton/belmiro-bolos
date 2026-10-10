@@ -426,6 +426,13 @@ input:focus, select:focus, textarea:focus { border-color: var(--marrom); outline
   font-weight: 600;
 }
 
+.tamanhos { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.tamanhos legend { padding: 0; margin-bottom: 2px; }
+.tamanhos__lista { display: grid; gap: 8px; list-style: none; }
+.tamanhos__lista:empty { display: none; }
+.tamanhos__linha { display: grid; grid-template-columns: 1fr 110px 40px; gap: 8px; align-items: center; }
+.tamanhos .btn { justify-self: start; }
+
 /* ---------- Toast ---------- */
 .toast {
   position: fixed;

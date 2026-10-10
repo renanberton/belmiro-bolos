@@ -1,22 +1,66 @@
 [
   {
-    "id": "tradicionais",
-    "nome": "Tradicionais"
+    "id": "bolos-caseiros",
+    "nome": "Bolos Caseiros"
   },
   {
-    "id": "com-cobertura",
-    "nome": "Com cobertura"
+    "id": "bolos-especiais",
+    "nome": "Bolos Especiais"
   },
   {
-    "id": "vulcao",
-    "nome": "Vulcão"
+    "id": "bolos-com-cobertura",
+    "nome": "Bolos com Cobertura"
   },
   {
-    "id": "recheados",
-    "nome": "Recheados"
+    "id": "bolos-vulcao",
+    "nome": "Bolos Vulcão"
   },
   {
-    "id": "especiais",
-    "nome": "Especiais"
+    "id": "linha-encanto",
+    "nome": "Linha Encanto"
+  },
+  {
+    "id": "bolos-recheados",
+    "nome": "Bolos Recheados"
+  },
+  {
+    "id": "bolos-meio-a-meio",
+    "nome": "Bolos Meio a Meio"
+  },
+  {
+    "id": "bolos-piscininha",
+    "nome": "Bolos Piscininha"
+  },
+  {
+    "id": "bolos-integrais",
+    "nome": "Bolos Integrais"
+  },
+  {
+    "id": "bolos-diet",
+    "nome": "Bolos Diet"
+  },
+  {
+    "id": "bolos-baby",
+    "nome": "Bolos Baby"
+  },
+  {
+    "id": "bolos-de-pote",
+    "nome": "Bolos de Pote"
+  },
+  {
+    "id": "tortas-e-cucas",
+    "nome": "Tortas e Cucas"
+  },
+  {
+    "id": "sobremesas",
+    "nome": "Sobremesas"
+  },
+  {
+    "id": "bolos-salgados",
+    "nome": "Bolos Salgados"
+  },
+  {
+    "id": "tortas-salgadas-com-catupiry",
+    "nome": "Tortas Salgadas com Catupiry"
   }
 ]

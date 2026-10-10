@@ -179,11 +179,18 @@
           <input id="boloNome" type="text" maxlength="60" required></label>
 
         <div class="grade-2">
-          <label class="campo"><span class="campo__rotulo">Preço (R$) *</span>
+          <label class="campo" id="campoPrecoUnico"><span class="campo__rotulo">Preço (R$) *</span>
             <input id="boloPreco" type="text" inputmode="decimal" placeholder="35,00" required></label>
           <label class="campo"><span class="campo__rotulo">Categoria *</span>
             <select id="boloCategoria" required></select></label>
         </div>
+
+        <fieldset class="tamanhos">
+          <legend class="campo__rotulo">Tamanhos</legend>
+          <p class="campo__dica">Opcional. Com tamanhos, cada um tem seu preço e o cliente escolhe no site.</p>
+          <ul id="listaTamanhos" class="tamanhos__lista"></ul>
+          <button id="btnAddTamanho" class="btn btn--secundario btn--p" type="button">+ Adicionar tamanho</button>
+        </fieldset>
 
         <label class="interruptor">
           <input id="boloDisponivel" type="checkbox">
@@ -228,6 +235,14 @@
         <input class="item__disponivel" type="checkbox">
         <span class="interruptor__trilho" aria-hidden="true"></span>
       </label>
+    </li>
+  </template>
+
+  <template id="modeloTamanho">
+    <li class="tamanhos__linha">
+      <input class="tamanho__nome" type="text" maxlength="20" placeholder="Pequena" aria-label="Nome do tamanho">
+      <input class="tamanho__preco" type="text" inputmode="decimal" placeholder="39,00" aria-label="Preço do tamanho">
+      <button class="btn-icone tamanho__remover" type="button" aria-label="Remover tamanho">✕</button>
     </li>
   </template>
 
