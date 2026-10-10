@@ -331,7 +331,7 @@
   function exibirFoto(img, caminho) {
     img.onerror = null;
     const src = srcFoto(caminho);
-    if (!src) { img.removeAttribute("src"); return; }
+    if (!src) { img.src = "../img/sem-foto.svg"; return; }
     if (!src.startsWith("blob:") && !/^https:/i.test(src)) {
       img.onerror = () => {
         img.onerror = null;
@@ -452,7 +452,10 @@
       exibirFoto($(".item__foto", li), p.foto);
       $(".item__nome", li).textContent = p.nome;
       const meta = $(".item__meta", li);
-      meta.textContent = `${nomeCategoria(p.categoria)} · ${moeda(Number(p.preco) || 0)}`;
+      const preco = Array.isArray(p.tamanhos) && p.tamanhos.length
+        ? `a partir de ${moeda(Math.min(...p.tamanhos.map((t) => t.preco)))}`
+        : moeda(Number(p.preco) || 0);
+      meta.textContent = `${nomeCategoria(p.categoria)} · ${preco}`;
       if (!p.disponivel) {
         const aviso = document.createElement("b");
         aviso.textContent = " · Indisponível";
@@ -517,6 +520,51 @@
     detalhes: $("#boloDetalhes"),
     foto: $("#campoFoto"),
   };
+  const listaTamanhos = $("#listaTamanhos");
+
+  // Com tamanhos, o preço único some: cada tamanho tem o seu
+  function atualizarCampoPreco() {
+    $("#campoPrecoUnico").hidden = listaTamanhos.children.length > 0;
+  }
+
+  function adicionarLinhaTamanho(tamanho) {
+    const li = $("#modeloTamanho").content.firstElementChild.cloneNode(true);
+    $(".tamanho__nome", li).value = tamanho ? tamanho.nome : "";
+    $(".tamanho__preco", li).value = tamanho ? precoTexto(tamanho.preco) : "";
+    listaTamanhos.appendChild(li);
+    atualizarCampoPreco();
+    return li;
+  }
+
+  $("#btnAddTamanho").addEventListener("click", () => {
+    const nomes = ["Pequena", "Grande"];
+    const li = adicionarLinhaTamanho(null);
+    $(".tamanho__nome", li).placeholder = nomes[listaTamanhos.children.length - 1] || "Tamanho";
+    $(".tamanho__nome", li).focus();
+  });
+  listaTamanhos.addEventListener("click", (e) => {
+    const botao = e.target.closest(".tamanho__remover");
+    if (!botao) return;
+    botao.closest("li").remove();
+    atualizarCampoPreco();
+  });
+
+  // Lê as linhas de tamanho; devolve { tamanhos } ou { erro }
+  function lerTamanhos() {
+    const tamanhos = [];
+    for (const li of listaTamanhos.children) {
+      const nome = $(".tamanho__nome", li).value.trim();
+      const textoPreco = $(".tamanho__preco", li).value;
+      if (!nome && !textoPreco.trim()) continue; // linha vazia é ignorada
+      const preco = lerPreco(textoPreco);
+      if (!nome || !Number.isFinite(preco)) return { erro: "preencha nome e preço de cada tamanho" };
+      if (nome.includes("|")) return { erro: "o nome do tamanho não pode ter \"|\"" };
+      if (tamanhos.some((t) => t.nome.toLowerCase() === nome.toLowerCase())) return { erro: `o tamanho "${nome}" está repetido` };
+      tamanhos.push({ nome, preco });
+    }
+    return { tamanhos };
+  }
+
   const moldura = $("#molduraFoto");
   const previaFoto = $("#previaFoto");
 
@@ -543,6 +591,9 @@
     $("#btnExcluirBolo").hidden = !p;
     $("#btnDuplicarBolo").hidden = !p;
     $("#erroBolo").hidden = true;
+    listaTamanhos.replaceChildren();
+    for (const t of (p && Array.isArray(p.tamanhos) ? p.tamanhos : [])) adicionarLinhaTamanho(t);
+    atualizarCampoPreco();
     mostrarFotoEditor(p ? p.foto : "");
 
     el.dialogo.showModal();
@@ -614,10 +665,14 @@
     e.preventDefault();
     const erro = $("#erroBolo");
     const nome = campo.nome.value.trim();
-    const preco = lerPreco(campo.preco.value);
+    const { tamanhos, erro: erroTamanhos } = lerTamanhos();
+    const usaTamanhos = Boolean(tamanhos && tamanhos.length);
+    // com tamanhos, "preco" guarda o menor deles (usado em "a partir de")
+    const preco = usaTamanhos ? Math.min(...tamanhos.map((t) => t.preco)) : lerPreco(campo.preco.value);
     const problemas = [];
     if (!nome) problemas.push("informe o nome");
-    if (!Number.isFinite(preco)) problemas.push("informe um preço válido (ex.: 35,90)");
+    if (erroTamanhos) problemas.push(erroTamanhos);
+    else if (!Number.isFinite(preco)) problemas.push("informe um preço válido (ex.: 35,90)");
     if (!campo.categoria.value) problemas.push("escolha a categoria");
     if (problemas.length) {
       erro.textContent = `Para salvar, ${problemas.join(" e ")}.`;
@@ -658,8 +713,13 @@
       disponivel: campo.disponivel.checked,
       destaque: campo.destaque.value.trim(),
     };
-    if (existente) Object.assign(existente, dados);
-    else estado.produtos.push(dados);
+    if (usaTamanhos) dados.tamanhos = tamanhos;
+    if (existente) {
+      Object.assign(existente, dados);
+      if (!usaTamanhos) delete existente.tamanhos;
+    } else {
+      estado.produtos.push(dados);
+    }
 
     limparFotoNova();
     el.dialogo.close();

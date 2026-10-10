@@ -43,12 +43,35 @@
     }
   }
 
+  function precoValido(v) {
+    return typeof v === "number" && isFinite(v) && v >= 0;
+  }
+
   function validarProduto(p) {
-    const ok = p && typeof p.id === "string" && typeof p.nome === "string" &&
-      typeof p.preco === "number" && isFinite(p.preco) && p.preco >= 0;
+    const ok = p && typeof p.id === "string" && typeof p.nome === "string" && precoValido(p.preco) &&
+      (p.tamanhos === undefined || (Array.isArray(p.tamanhos) &&
+        p.tamanhos.every((t) => t && typeof t.nome === "string" && t.nome && precoValido(t.preco))));
     if (!ok) console.warn("[Belmiro Bolos] Produto ignorado por dados inválidos:", p);
     return ok;
   }
+
+  // Bolo vendido em tamanhos (ex.: Pequena / Grande): cada tamanho tem seu preço
+  const temTamanhos = (p) => Array.isArray(p.tamanhos) && p.tamanhos.length > 0;
+  const precoMinimo = (p) => (temTamanhos(p) ? Math.min(...p.tamanhos.map((t) => t.preco)) : p.preco);
+  const textoPreco = (p) => (temTamanhos(p) ? `a partir de ${moeda(precoMinimo(p))}` : moeda(p.preco));
+
+  // Item do carrinho: chave "id" ou "id|Tamanho"
+  const chaveItem = (produto, tamanho) => (tamanho ? `${produto.id}|${tamanho.nome}` : produto.id);
+  function itemDaChave(chave) {
+    const [id, nomeTamanho] = String(chave).split("|");
+    const produto = produtosPorId.get(id);
+    if (!produto) return null;
+    if (!temTamanhos(produto)) return nomeTamanho === undefined ? { produto, tamanho: null } : null;
+    const tamanho = produto.tamanhos.find((t) => t.nome === nomeTamanho);
+    return tamanho ? { produto, tamanho } : null;
+  }
+  const nomeItem = ({ produto, tamanho }) => (tamanho ? `${produto.nome} (${tamanho.nome})` : produto.nome);
+  const precoItem = ({ produto, tamanho }) => (tamanho ? tamanho.preco : produto.preco);
 
   // ---------- Utilidades ----------
   const $ = (seletor, raiz = document) => raiz.querySelector(seletor);
@@ -72,7 +95,7 @@
     const texto = String(url || "").replace(/^\/(?=[^/])/, "");
     return /^(https:\/\/|\.{0,2}\/?[\w\-./]+$)/i.test(texto) && !/^\s*(javascript|data):/i.test(texto)
       ? texto
-      : "img/logo.svg";
+      : "img/sem-foto.svg"; // bolo ainda sem foto (ou caminho inválido)
   }
 
   const armazenamento = {
@@ -88,8 +111,9 @@
   const estado = {
     categoria: "todos",
     busca: "",
-    carrinho: carregarCarrinho(), // Map<id, quantidade>
+    carrinho: carregarCarrinho(), // Map<chave (id ou id|tamanho), quantidade>
     produtoAberto: null,
+    tamanhoModal: null,
     qtdModal: 1,
     linkWhatsapp: "",
   };
@@ -100,10 +124,10 @@
     if (!Array.isArray(salvo)) return carrinho;
     for (const item of salvo) {
       if (!Array.isArray(item)) continue;
-      const [id, qtd] = item;
-      const produto = produtosPorId.get(id);
-      if (produto && produto.disponivel && Number.isInteger(qtd) && qtd > 0) {
-        carrinho.set(id, Math.min(qtd, QTD_MAX));
+      const [chave, qtd] = item;
+      const alvo = itemDaChave(chave);
+      if (alvo && alvo.produto.disponivel && Number.isInteger(qtd) && qtd > 0) {
+        carrinho.set(chave, Math.min(qtd, QTD_MAX));
       }
     }
     return carrinho;
@@ -114,9 +138,10 @@
   }
 
   function itensCarrinho() {
-    return [...estado.carrinho].map(([id, qtd]) => {
-      const produto = produtosPorId.get(id);
-      return { produto, qtd, subtotal: produto.preco * qtd };
+    return [...estado.carrinho].map(([chave, qtd]) => {
+      const alvo = itemDaChave(chave);
+      const preco = precoItem(alvo);
+      return { chave, produto: alvo.produto, nome: nomeItem(alvo), preco, qtd, subtotal: preco * qtd };
     });
   }
 
@@ -225,7 +250,7 @@
       foto.alt = p.nome;
       $(".produto__nome", card).textContent = p.nome;
       $(".produto__descricao", card).textContent = p.descricao || "";
-      $(".produto__preco", card).textContent = moeda(p.preco);
+      $(".produto__preco", card).textContent = textoPreco(p);
       $(".produto__abrir", card).setAttribute("aria-label", `Ver detalhes de ${p.nome}`);
 
       if (p.destaque) {
@@ -256,7 +281,11 @@
     const card = e.target.closest(".produto");
     if (!acao || !card) return;
     const produto = produtosPorId.get(card.dataset.id);
-    if (acao.dataset.acao === "adicionar") adicionarAoCarrinho(produto, 1);
+    // com tamanhos, o cliente escolhe o tamanho no detalhe do bolo
+    if (acao.dataset.acao === "adicionar") {
+      if (temTamanhos(produto)) abrirProduto(produto);
+      else adicionarAoCarrinho(produto, null, 1);
+    }
     if (acao.dataset.acao === "detalhes") abrirProduto(produto);
   });
 
@@ -264,47 +293,85 @@
   function abrirProduto(p) {
     estado.produtoAberto = p;
     estado.qtdModal = 1;
+    estado.tamanhoModal = null;
     const foto = $("#produtoFoto");
     foto.src = urlImagemSegura(p.foto);
     foto.alt = p.nome;
     $("#produtoCategoria").textContent = nomesCategorias.get(p.categoria) || "";
     $("#produtoNome").textContent = p.nome;
     $("#produtoDetalhes").textContent = p.detalhes || p.descricao || "";
-    $("#produtoPreco").textContent = moeda(p.preco);
+    $("#produtoPreco").textContent = textoPreco(p);
+    renderizarTamanhos(p);
     $("#produtoIndisponivel").hidden = p.disponivel;
     $("#produtoAcoes").hidden = !p.disponivel;
     atualizarQtdModal();
     abrirModal(el.modalProduto);
   }
 
+  function renderizarTamanhos(p) {
+    const grupo = $("#produtoTamanhos");
+    grupo.hidden = !temTamanhos(p);
+    if (!temTamanhos(p)) return;
+    const opcoes = p.tamanhos.map((t, i) => {
+      const rotulo = document.createElement("label");
+      rotulo.className = "opcao";
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "tamanho";
+      radio.value = String(i);
+      const caixa = document.createElement("span");
+      caixa.className = "opcao__caixa";
+      const nome = document.createElement("strong");
+      nome.textContent = t.nome;
+      const preco = document.createElement("small");
+      preco.textContent = moeda(t.preco);
+      caixa.append(nome, preco);
+      rotulo.append(radio, caixa);
+      return rotulo;
+    });
+    $("#produtoOpcoesTamanho").replaceChildren(...opcoes);
+  }
+
+  $("#produtoOpcoesTamanho").addEventListener("change", (e) => {
+    const p = estado.produtoAberto;
+    estado.tamanhoModal = p && temTamanhos(p) ? p.tamanhos[Number(e.target.value)] || null : null;
+    if (estado.tamanhoModal) $("#produtoPreco").textContent = moeda(estado.tamanhoModal.preco);
+    atualizarQtdModal();
+  });
+
   function atualizarQtdModal() {
     $("#produtoQtd").textContent = estado.qtdModal;
     $("#produtoMenos").disabled = estado.qtdModal <= 1;
     $("#produtoMais").disabled = estado.qtdModal >= QTD_MAX;
     const p = estado.produtoAberto;
-    $("#produtoAdicionar").textContent = p
-      ? `Adicionar ao pedido · ${moeda(p.preco * estado.qtdModal)}`
-      : "Adicionar ao pedido";
+    const faltaTamanho = Boolean(p && temTamanhos(p) && !estado.tamanhoModal);
+    $("#produtoAdicionar").disabled = faltaTamanho;
+    $("#produtoAdicionar").textContent = !p
+      ? "Adicionar ao pedido"
+      : faltaTamanho
+        ? "Escolha o tamanho"
+        : `Adicionar ao pedido · ${moeda(precoItem({ produto: p, tamanho: estado.tamanhoModal }) * estado.qtdModal)}`;
   }
 
   $("#produtoMenos").addEventListener("click", () => { estado.qtdModal = Math.max(1, estado.qtdModal - 1); atualizarQtdModal(); });
   $("#produtoMais").addEventListener("click", () => { estado.qtdModal = Math.min(QTD_MAX, estado.qtdModal + 1); atualizarQtdModal(); });
   $("#produtoAdicionar").addEventListener("click", () => {
-    adicionarAoCarrinho(estado.produtoAberto, estado.qtdModal);
+    adicionarAoCarrinho(estado.produtoAberto, estado.tamanhoModal, estado.qtdModal);
     el.modalProduto.close();
   });
 
   // ---------- Carrinho ----------
-  function adicionarAoCarrinho(produto, qtd) {
-    if (!produto || !produto.disponivel) return;
-    const atual = estado.carrinho.get(produto.id) || 0;
+  function adicionarAoCarrinho(produto, tamanho, qtd) {
+    if (!produto || !produto.disponivel || (temTamanhos(produto) && !tamanho)) return;
+    const chave = chaveItem(produto, tamanho);
+    const atual = estado.carrinho.get(chave) || 0;
     const nova = Math.min(atual + qtd, QTD_MAX);
-    estado.carrinho.set(produto.id, nova);
+    estado.carrinho.set(chave, nova);
     salvarCarrinho();
     atualizarResumo(true);
     mostrarToast(nova === QTD_MAX && atual + qtd > QTD_MAX
       ? `Limite de ${QTD_MAX} unidades por bolo`
-      : `${produto.nome} adicionado ao pedido`);
+      : `${nomeItem({ produto, tamanho })} adicionado ao pedido`);
   }
 
   function alterarQuantidade(id, delta) {
@@ -338,20 +405,20 @@
   function renderizarCarrinho() {
     const itens = itensCarrinho();
     const fragmento = document.createDocumentFragment();
-    for (const { produto, qtd, subtotal } of itens) {
+    for (const { chave, produto, nome, preco, qtd, subtotal } of itens) {
       const li = el.modeloItem.content.firstElementChild.cloneNode(true);
-      li.dataset.id = produto.id;
+      li.dataset.id = chave;
       const foto = $(".item-carrinho__foto", li);
       foto.src = urlImagemSegura(produto.foto);
-      $(".item-carrinho__nome", li).textContent = produto.nome;
-      $(".item-carrinho__unitario", li).textContent = `${moeda(produto.preco)} cada`;
+      $(".item-carrinho__nome", li).textContent = nome;
+      $(".item-carrinho__unitario", li).textContent = `${moeda(preco)} cada`;
       $("[data-qtd]", li).textContent = qtd;
       $(".item-carrinho__subtotal", li).textContent = moeda(subtotal);
-      $("[data-acao='diminuir']", li).setAttribute("aria-label", `Diminuir quantidade de ${produto.nome}`);
+      $("[data-acao='diminuir']", li).setAttribute("aria-label", `Diminuir quantidade de ${nome}`);
       const mais = $("[data-acao='aumentar']", li);
-      mais.setAttribute("aria-label", `Aumentar quantidade de ${produto.nome}`);
+      mais.setAttribute("aria-label", `Aumentar quantidade de ${nome}`);
       mais.disabled = qtd >= QTD_MAX;
-      $("[data-acao='remover']", li).setAttribute("aria-label", `Remover ${produto.nome} do pedido`);
+      $("[data-acao='remover']", li).setAttribute("aria-label", `Remover ${nome} do pedido`);
       fragmento.appendChild(li);
     }
     el.listaCarrinho.replaceChildren(fragmento);
@@ -367,7 +434,7 @@
     if (acao.dataset.acao === "aumentar") alterarQuantidade(id, 1);
     if (acao.dataset.acao === "diminuir") alterarQuantidade(id, -1);
     if (acao.dataset.acao === "remover") {
-      const nome = produtosPorId.get(id).nome;
+      const nome = nomeItem(itemDaChave(id));
       estado.carrinho.delete(id);
       salvarCarrinho();
       atualizarResumo();
@@ -482,7 +549,7 @@
       `Olá! Gostaria de fazer um pedido na ${CONFIG.nomeLoja}.`,
       "",
       "Produtos:",
-      ...itensCarrinho().map(({ produto, qtd, subtotal }) => `${qtd}x ${produto.nome} - ${moeda(subtotal)}`),
+      ...itensCarrinho().map(({ nome, qtd, subtotal }) => `${qtd}x ${nome} - ${moeda(subtotal)}`),
       "",
       `Total: ${moeda(totalValor())}`,
       "",
@@ -640,12 +707,13 @@
             name: p.nome,
             description: p.descricao || undefined,
             image: urlAbsoluta(urlImagemSegura(p.foto)),
-            offers: {
+            offers: (temTamanhos(p) ? p.tamanhos : [{ preco: p.preco }]).map((t) => ({
               "@type": "Offer",
-              price: p.preco.toFixed(2),
+              name: t.nome,
+              price: t.preco.toFixed(2),
               priceCurrency: "BRL",
               availability: p.disponivel ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-            },
+            })),
           })),
         })),
       },

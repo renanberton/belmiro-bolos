@@ -831,6 +831,8 @@ body:has(.barra-pedido:not([hidden])) .whats-flutuante { bottom: calc(var(--altu
   color: var(--marrom);
   font-variant-numeric: tabular-nums;
 }
+.produto-detalhe__tamanhos { margin: 4px 0 0; padding: 0; border: 0; min-width: 0; }
+.produto-detalhe__tamanhos legend { margin-bottom: 8px; padding: 0; font-weight: 700; }
 .produto-detalhe__corpo .selo-indisponivel { align-self: flex-start; margin-top: 4px; }
 .produto-detalhe__acoes {
   display: flex;

@@ -27,6 +27,11 @@ Acesse **`<site>/admin/`** (funciona no celular). Tudo é editado lá:
 - **Bolos:** criar, editar, duplicar, excluir, ligar/desligar "disponível" com um toque e
   **arrastar pela alça ⠿** para mudar a ordem (a ordem do painel é a ordem do cardápio).
   Bolo indisponível continua no cardápio com o selo "Indisponível no momento".
+- **Tamanhos:** no editor do bolo, "+ Adicionar tamanho" (ex.: Pequena R$ 39 / Grande R$ 59). Com
+  tamanhos, o card mostra "a partir de", o cliente escolhe o tamanho ao adicionar e o tamanho vai no
+  carrinho e na mensagem do WhatsApp. Sem tamanhos, vale o preço único.
+- **Selos:** "Sem glúten" / "Sem lactose" usam o campo "Selo de destaque". Itens sem glúten levam o
+  aviso de contaminação cruzada nos detalhes.
 - **Fotos:** no editor do bolo, "Escolher/Trocar foto" (galeria ou câmera). O painel recorta em 4:3
   (arraste a foto para ajustar o enquadramento), reduz para 800 × 600 e converte para .webp.
   Fotos que deixam de ser usadas são apagadas do repositório ao publicar.
@@ -45,9 +50,10 @@ O repositório e o branch usados pelo painel ficam no topo de `admin/admin.js` (
 Sem o painel, dá para editar os arquivos de `data/` direto (preço com ponto: `45.9` = R$ 45,90;
 o `id` do bolo deve ser único e o `categoria` deve existir em `categorias.json`).
 
-### Fotos oficiais
-As imagens atuais são **ilustrações provisórias** (.svg). Troque cada uma pelo painel; a provisória
-é apagada sozinha quando nenhum bolo usa mais ela.
+### Fotos
+Bolo sem foto aparece com a imagem neutra "Foto em breve" (`img/sem-foto.svg`). Para pôr a foto,
+use o painel. Fotos em HEIF/HEIC (iPhone) só abrem no painel pelo próprio iPhone; no PC, converta
+antes para JPG/WEBP.
 
 O logo oficial está em `img/utils/logo.png`; o site usa a versão recortada `img/utils/logo-horizontal.png`.
 
