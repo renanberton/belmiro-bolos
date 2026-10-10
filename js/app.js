@@ -2,13 +2,13 @@
  * BELMIRO BOLOS — lógica do cardápio, carrinho e envio pelo WhatsApp.
  * Normalmente NÃO é necessário editar este arquivo:
  *   - dados da loja  -> js/config.js
- *   - produtos       -> js/produtos.js
+ *   - produtos       -> data/produtos.json (editado pelo painel /admin)
  *
  * Segurança: todo texto é inserido com textContent (nunca innerHTML),
  * o carrinho salvo é revalidado contra o catálogo e os preços sempre
- * vêm de js/produtos.js — nunca do armazenamento do navegador.
+ * vêm de data/produtos.json — nunca do armazenamento do navegador.
  */
-(function () {
+(async function () {
   "use strict";
 
   const CONFIG = window.BB_CONFIG;
@@ -16,9 +16,22 @@
   const QTD_MAX = CONFIG.quantidadeMaxima || 20;
 
   // ---------- Catálogo ----------
-  const produtos = (window.BB_PRODUTOS || []).filter(validarProduto).map(Object.freeze);
+  const produtos = (await carregarProdutos()).filter(validarProduto).map(Object.freeze);
   const produtosPorId = new Map(produtos.map((p) => [p.id, p]));
   const nomesCategorias = new Map(CONFIG.categorias.map((c) => [c.id, c.nome]));
+
+  // no-cache: revalida a cada visita, para mudanças de preço/disponibilidade aparecerem na hora
+  async function carregarProdutos() {
+    try {
+      const resposta = await fetch("data/produtos.json", { cache: "no-cache" });
+      if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
+      const dados = await resposta.json();
+      return Array.isArray(dados) ? dados : [];
+    } catch (erro) {
+      console.error("[Belmiro Bolos] Não foi possível carregar o cardápio:", erro);
+      return [];
+    }
+  }
 
   function validarProduto(p) {
     const ok = p && typeof p.id === "string" && typeof p.nome === "string" &&
@@ -45,7 +58,8 @@
 
   // Aceita apenas caminhos relativos ou https para imagens
   function urlImagemSegura(url) {
-    const texto = String(url || "");
+    // O painel grava "/img/produtos/x.webp"; sem a barra inicial o caminho também funciona em subpasta (GitHub Pages)
+    const texto = String(url || "").replace(/^\/(?=[^/])/, "");
     return /^(https:\/\/|\.{0,2}\/?[\w\-./]+$)/i.test(texto) && !/^\s*(javascript|data):/i.test(texto)
       ? texto
       : "img/logo.svg";

@@ -14,7 +14,7 @@ window.BB_CONFIG = Object.freeze({
   mensagemContato: "Olá, Belmiro Bolos! Gostaria de tirar uma dúvida.",
 
   // Categorias exibidas no topo, na ordem desejada.
-  // O "id" precisa ser igual ao campo "categoria" dos produtos (js/produtos.js).
+  // O "id" precisa ser igual ao campo "categoria" dos produtos (data/produtos.json / painel /admin).
   // A categoria "todos" é especial e mostra todos os produtos.
   categorias: [
     { id: "todos", nome: "Todos" },

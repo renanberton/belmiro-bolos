@@ -1,0 +1,93 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.218.3/schema/sveltia-cms.json
+#
+# Painel de produtos (Sveltia CMS). Acesse /admin no site e entre com "Sign In with Token".
+# Cada "Publicar" vira um commit no GitHub, e o site é republicado sozinho.
+
+backend:
+  name: github
+  repo: renanberton/belmiro-bolos
+  branch: main
+  commit_messages:
+    create: "Cardápio: adiciona {{slug}}"
+    update: "Cardápio: atualiza {{slug}}"
+    delete: "Cardápio: remove {{slug}}"
+    uploadMedia: "Fotos: envia {{path}}"
+    deleteMedia: "Fotos: remove {{path}}"
+
+# Fotos ficam no próprio repositório, convertidas para .webp e reduzidas
+media_folder: img/produtos
+public_folder: /img/produtos
+media_libraries:
+  default:
+    config:
+      slugify_filename: true
+      max_file_size: 15000000 # foto original do celular; depois de otimizada fica bem menor
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1200
+          height: 1200
+
+collections:
+  - name: cardapio
+    label: Cardápio
+    files:
+      - name: produtos
+        label: Bolos
+        file: data/produtos.json
+        fields:
+          - name: produtos
+            label: Bolos
+            label_singular: Bolo
+            widget: list
+            root: true # o arquivo é só a lista: [ {...}, {...} ]
+            summary: "{{nome}} · R$ {{preco}}{{disponivel | ternary('', ' · INDISPONÍVEL')}}"
+            thumbnail: foto
+            collapsed: true
+            fields:
+              - name: nome
+                label: Nome
+              - name: id
+                label: ID
+                hint: "Único: letras minúsculas sem acento, números e hífen (ex.: bolo-cenoura). Não altere depois de criado."
+                pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use só letras minúsculas sem acento, números e hífen']
+              - name: disponivel
+                label: Disponível
+                widget: boolean
+                default: true
+                hint: Desligado, aparece como "Indisponível no momento" e não pode ser pedido.
+              - name: preco
+                label: Preço (R$)
+                widget: number
+                value_type: float
+                min: 0
+                step: 0.01
+              - name: categoria
+                label: Categoria
+                widget: select
+                # Manter igual a "categorias" em js/config.js (exceto "todos")
+                options:
+                  - { label: Tradicionais, value: tradicionais }
+                  - { label: Com cobertura, value: com-cobertura }
+                  - { label: Vulcão, value: vulcao }
+                  - { label: Recheados, value: recheados }
+                  - { label: Especiais, value: especiais }
+              - name: foto
+                label: Foto
+                widget: image
+                hint: Qualquer foto serve; é convertida para .webp automaticamente. No site aparece cortada em 4:3.
+              - name: descricao
+                label: Descrição curta
+                widget: text
+                hint: Aparece no card do cardápio.
+              - name: detalhes
+                label: Detalhes
+                widget: text
+                required: false
+                hint: Texto maior, exibido ao abrir o produto.
+              - name: destaque
+                label: Selo de destaque
+                required: false
+                default: ""
+                hint: 'Ex.: "Mais pedido". Deixe vazio para não exibir selo.'
