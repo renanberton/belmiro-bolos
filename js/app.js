@@ -646,7 +646,7 @@
       const insta = $("#rodapeInstagram");
       insta.href = `https://instagram.com/${r.instagram}`;
       insta.setAttribute("aria-label", `Instagram @${r.instagram}`);
-      preencher(insta, `@${r.instagram}`);
+      preencher(insta, "Instagram"); // mesmo padrão do WhatsApp e do Facebook; o @ fica no aria-label
     }
     if (r.facebook && /^[\w.\-]{1,50}$/.test(r.facebook)) {
       const face = $("#rodapeFacebook");
