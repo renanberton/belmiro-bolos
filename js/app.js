@@ -190,6 +190,14 @@
     el.listaCategorias.replaceChildren(fragmento);
   }
 
+  // No computador, a rodinha do mouse rola as categorias para o lado
+  el.listaCategorias.addEventListener("wheel", (e) => {
+    const lista = el.listaCategorias;
+    if (e.shiftKey || Math.abs(e.deltaY) <= Math.abs(e.deltaX) || lista.scrollWidth <= lista.clientWidth) return;
+    e.preventDefault();
+    lista.scrollLeft += e.deltaY;
+  }, { passive: false });
+
   el.listaCategorias.addEventListener("click", (e) => {
     const botao = e.target.closest("[data-categoria]");
     if (!botao) return;
@@ -256,6 +264,7 @@
       if (p.destaque) {
         const selo = $(".produto__selo", card);
         selo.textContent = p.destaque;
+        selo.dataset.tipo = normalizar(p.destaque); // "sem lactose" / "sem gluten" têm cor própria
         selo.hidden = false;
       }
       if (!p.disponivel) {

@@ -81,6 +81,10 @@ no Netlify e no Cloudflare Pages (a regra de `/admin/*` usa a sintaxe do Cloudfl
 `<meta>`). O painel precisa que o site seja publicado a partir do repositório no GitHub (GitHub Pages,
 Cloudflare Pages ou Netlify ligados ao repo); no FTP as alterações do painel não chegam ao site.
 
+**Ao alterar CSS ou JS**, troque o número em `?v=` nas tags `<link>`/`<script>` do `index.html`
+(e do `admin/index.html`, se mexer no painel). Sem isso, quem já visitou o site pode ficar até
+10 minutos com o código antigo em cache, misturado com os dados novos.
+
 ## Segurança (resumo)
 - Sem back-end e sem banco de dados: não há dados de clientes armazenados no servidor.
 - O painel `/admin` é só uma página estática: quem não tem um token com escrita no repositório não

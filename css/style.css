@@ -134,7 +134,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .btn:active:not(:disabled) { transform: scale(.98); }
 
 .btn--primario { background: var(--marrom); color: var(--branco); }
-.btn--primario:hover { background: var(--marrom-escuro); }
+.btn--primario:hover:not(:disabled) { background: var(--marrom-escuro); }
+.btn:disabled { opacity: .5; }
 
 .btn--secundario { background: transparent; color: var(--marrom); border-color: var(--marrom); }
 .btn--secundario:hover { background: var(--creme-2); }
@@ -288,11 +289,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   width: 36px; height: 36px;
   border: 0;
   border-radius: 50%;
+  display: grid;
+  place-items: center;
   background: var(--creme-2);
   color: var(--texto-suave);
-  font-size: 1.25rem;
-  line-height: 1;
 }
+.busca__limpar svg, .modal__fechar svg { display: block; }
 
 /* Categorias */
 .categorias { padding-inline: 0; }
@@ -424,6 +426,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   letter-spacing: .02em;
   line-height: 1.3;
 }
+/* Mesmas cores das bolinhas do cardápio impresso: azul = sem lactose, verde = sem glúten */
+.produto__selo[data-tipo="sem lactose"] { background: #1a6fae; }
+.produto__selo[data-tipo="sem gluten"] { background: #2b7a37; }
 
 .produto__info {
   display: flex;
@@ -441,6 +446,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--texto);
   overflow-wrap: anywhere;
 }
+.produto__descricao:empty { display: none; }
 .produto__descricao {
   max-width: 34ch;
   color: var(--texto-suave);
@@ -760,6 +766,8 @@ body:has(.barra-pedido:not([hidden])) .whats-flutuante { bottom: calc(var(--altu
   box-shadow: var(--sombra-forte);
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--borda) transparent;
 }
 .modal[open] { animation: modal-entrar .25s ease; }
 .modal::backdrop {
@@ -782,8 +790,6 @@ body:has(.barra-pedido:not([hidden])) .whats-flutuante { bottom: calc(var(--altu
   border-radius: 50%;
   background: rgba(255, 255, 255, .92);
   color: var(--texto);
-  font-size: 1.625rem;
-  line-height: 1;
   box-shadow: var(--sombra);
 }
 .modal__fechar:hover { background: var(--branco); }
@@ -1232,9 +1238,9 @@ body:has(.barra-pedido:not([hidden])) .toast { bottom: calc(var(--altura-barra) 
   .topo { display: grid; grid-template-columns: 1fr; }
   .busca { max-width: 640px; margin-inline: auto; }
   .categorias__lista {
-    justify-content: center;
-    flex-wrap: wrap;
-    overflow: visible;
+    justify-content: safe center; /* centraliza se couber; senão começa da esquerda e rola */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, .35) transparent;
   }
 
   .cardapio { padding-block: 32px 48px; }
