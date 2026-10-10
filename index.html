@@ -30,8 +30,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=20261010">
-  <script src="js/app.js?v=20261010" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=20261010-2">
+  <script src="js/app.js?v=20261010-2" defer></script>
 </head>
 <body>
   <a class="pular-link" href="#cardapio">Pular para o cardápio</a>
@@ -53,7 +53,7 @@
       <label for="campoBusca" class="sr-only">Qual bolo você está procurando?</label>
       <svg class="busca__icone" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       <input type="search" id="campoBusca" class="busca__campo" placeholder="Qual bolo você está procurando?" autocomplete="off" maxlength="60" enterkeyhint="search">
-      <button type="button" class="busca__limpar" id="btnLimparBusca" aria-label="Limpar pesquisa" hidden>&times;</button>
+      <button type="button" class="busca__limpar" id="btnLimparBusca" aria-label="Limpar pesquisa" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
     </div>
 
     <nav class="container categorias" aria-label="Categorias">
@@ -148,7 +148,7 @@
 
   <!-- ===== MODAL: DETALHES DO PRODUTO ===== -->
   <dialog class="modal modal--produto" id="modalProduto" aria-labelledby="produtoNome">
-    <button type="button" class="modal__fechar" data-fechar aria-label="Fechar">&times;</button>
+    <button type="button" class="modal__fechar" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
     <img class="produto-detalhe__foto" id="produtoFoto" src="" alt="" width="800" height="600">
     <div class="produto-detalhe__corpo">
       <p class="produto-detalhe__categoria" id="produtoCategoria"></p>
@@ -178,7 +178,7 @@
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <h2 class="pedido__titulo" id="pedidoTitulo">Meu pedido</h2>
-      <button type="button" class="modal__fechar modal__fechar--estatico" data-fechar aria-label="Fechar">&times;</button>
+      <button type="button" class="modal__fechar modal__fechar--estatico" data-fechar aria-label="Fechar"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
     </div>
 
     <ol class="etapas" aria-label="Etapas do pedido">
