@@ -592,8 +592,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .social:hover { background: rgba(255, 255, 255, .14); border-color: rgba(255, 255, 255, .4); }
 .social:active { transform: scale(.97); }
-.social--whatsapp { background: var(--whatsapp); border-color: var(--whatsapp); }
-.social--whatsapp:hover { background: var(--whatsapp-escuro); border-color: var(--whatsapp-escuro); }
 
 /* Celular: rodapé centralizado, em blocos da mesma largura */
 @media (max-width: 599px) {
