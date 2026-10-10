@@ -2,12 +2,244 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data: https://raw.githubusercontent.com; connect-src https://api.github.com; object-src 'none'; base-uri 'self'; form-action 'none'">
   <meta name="robots" content="noindex, nofollow">
-  <title>Painel — Belmiro Bolos</title>
+  <meta name="referrer" content="no-referrer">
+  <title>Painel · Belmiro Bolos</title>
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Plus+Jakarta+Sans:wght@400..800&display=swap">
+  <link rel="stylesheet" href="admin.css">
+  <script src="admin.js" defer></script>
 </head>
 <body>
-  <!-- Sveltia CMS: lê a configuração de admin/config.yml -->
-  <script src="https://unpkg.com/@sveltia/cms@0.218.3/dist/sveltia-cms.js"></script>
+
+  <!-- ================= Login ================= -->
+  <main id="telaLogin" class="login" hidden>
+    <form id="formLogin" class="login__cartao" novalidate>
+      <img class="login__logo" src="../img/utils/logo-horizontal.png" alt="Belmiro Bolos" width="220" height="70">
+      <h1>Painel do cardápio</h1>
+      <p class="suave">Entre com o token do GitHub que tem permissão de escrita no repositório do site.</p>
+
+      <label class="campo">
+        <span class="campo__rotulo">Token do GitHub</span>
+        <input id="campoToken" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_..." required>
+      </label>
+
+      <label class="checagem">
+        <input id="campoLembrar" type="checkbox" checked>
+        <span>Lembrar neste aparelho</span>
+      </label>
+
+      <p id="erroLogin" class="erro" role="alert" hidden></p>
+
+      <button id="btnEntrar" class="btn btn--primario btn--largo" type="submit">Entrar</button>
+
+      <details class="ajuda">
+        <summary>Como criar o token?</summary>
+        <ol>
+          <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.</li>
+          <li><b>Repository access:</b> "Only select repositories", marque o repositório do site.</li>
+          <li><b>Permissions → Contents:</b> "Read and write".</li>
+          <li>Gere, copie e cole aqui. Para bloquear o acesso, basta revogar o token no GitHub.</li>
+        </ol>
+      </details>
+    </form>
+  </main>
+
+  <!-- ================= Painel ================= -->
+  <div id="telaApp" class="app" hidden>
+    <header class="topo">
+      <div class="topo__linha">
+        <div class="topo__marca">
+          <img src="../img/logo.svg" alt="" width="32" height="32">
+          <span>Painel</span>
+        </div>
+        <div class="topo__acoes">
+          <a class="btn btn--fantasma btn--p" href="../" target="_blank" rel="noopener">Ver site</a>
+          <button id="btnSair" class="btn btn--fantasma btn--p" type="button">Sair</button>
+        </div>
+      </div>
+      <div class="topo__linha topo__linha--publicar">
+        <p id="status" class="status" aria-live="polite">Carregando…</p>
+        <div class="topo__acoes">
+          <button id="btnDescartar" class="btn btn--fantasma btn--p" type="button" hidden>Descartar</button>
+          <button id="btnPublicar" class="btn btn--primario" type="button" disabled>Publicar</button>
+        </div>
+      </div>
+      <nav class="abas" role="tablist" aria-label="Seções">
+        <button class="aba" role="tab" type="button" data-aba="bolos" aria-selected="true">Bolos</button>
+        <button class="aba" role="tab" type="button" data-aba="categorias" aria-selected="false">Categorias</button>
+        <button class="aba" role="tab" type="button" data-aba="loja" aria-selected="false">Loja</button>
+      </nav>
+    </header>
+
+    <main class="conteudo">
+      <!-- ---------- Bolos ---------- -->
+      <section id="abaBolos" class="painel" role="tabpanel" aria-label="Bolos">
+        <div class="filtros">
+          <input id="campoBusca" class="filtros__busca" type="search" placeholder="Buscar bolo…" aria-label="Buscar bolo">
+          <select id="filtroCategoria" aria-label="Filtrar por categoria"></select>
+          <button id="btnNovoBolo" class="btn btn--primario" type="button">+ Novo bolo</button>
+        </div>
+        <p id="avisoOrdem" class="dica" hidden>Para reordenar, limpe a busca e o filtro.</p>
+        <p class="dica" id="dicaOrdem">Arraste pela alça <span aria-hidden="true">⠿</span> para mudar a ordem no cardápio.</p>
+        <ul id="listaBolos" class="lista"></ul>
+        <p id="semBolos" class="vazio" hidden>Nenhum bolo encontrado.</p>
+      </section>
+
+      <!-- ---------- Categorias ---------- -->
+      <section id="abaCategorias" class="painel" role="tabpanel" aria-label="Categorias" hidden>
+        <form id="formCategoria" class="filtros" novalidate>
+          <input id="campoNovaCategoria" class="filtros__busca" type="text" maxlength="40" placeholder="Nome da nova categoria" aria-label="Nome da nova categoria">
+          <button class="btn btn--primario" type="submit">+ Adicionar</button>
+        </form>
+        <p class="dica">A ordem aqui é a ordem dos botões de categoria no site. Só dá para excluir categorias sem bolos.</p>
+        <ul id="listaCategorias" class="lista"></ul>
+        <p id="semCategorias" class="vazio" hidden>Nenhuma categoria ainda.</p>
+      </section>
+
+      <!-- ---------- Loja ---------- -->
+      <section id="abaLoja" class="painel" role="tabpanel" aria-label="Loja" hidden>
+        <form id="formLoja" class="formulario" novalidate>
+          <fieldset>
+            <legend>Contato</legend>
+            <label class="campo"><span class="campo__rotulo">Nome da loja</span>
+              <input type="text" data-campo="nomeLoja" maxlength="60"></label>
+            <label class="campo"><span class="campo__rotulo">WhatsApp (recebe os pedidos)</span>
+              <input type="tel" data-campo="whatsapp" data-tipo="digitos" inputmode="numeric" maxlength="15" placeholder="5513991173134">
+              <span class="campo__dica">Só números: 55 + DDD + número.</span></label>
+            <label class="campo"><span class="campo__rotulo">Mensagem do botão de contato</span>
+              <input type="text" data-campo="mensagemContato" maxlength="200"></label>
+            <label class="campo"><span class="campo__rotulo">Telefone fixo</span>
+              <input type="tel" data-campo="rodape.telefone" maxlength="20" placeholder="(13) 2202-1187">
+              <span class="campo__dica">Deixe vazio para ocultar.</span></label>
+            <label class="campo"><span class="campo__rotulo">Quantidade máxima de um mesmo bolo por pedido</span>
+              <input type="number" data-campo="quantidadeMaxima" data-tipo="numero" min="1" max="99" inputmode="numeric"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Rodapé</legend>
+            <label class="campo"><span class="campo__rotulo">Frase de apresentação</span>
+              <textarea data-campo="rodape.slogan" rows="2" maxlength="200"></textarea></label>
+            <label class="campo"><span class="campo__rotulo">Endereço (rua, número, bairro)</span>
+              <input type="text" data-campo="rodape.endereco" maxlength="120"></label>
+            <label class="campo"><span class="campo__rotulo">Horário de funcionamento</span>
+              <textarea data-campo="rodape.horario" data-tipo="linhas" rows="3"></textarea>
+              <span class="campo__dica">Uma linha por item, ex.: "Sábado: 8h30 às 19h".</span></label>
+            <label class="campo"><span class="campo__rotulo">Instagram (sem @)</span>
+              <input type="text" data-campo="rodape.instagram" maxlength="30" autocapitalize="off"></label>
+            <label class="campo"><span class="campo__rotulo">Facebook (nome da página)</span>
+              <input type="text" data-campo="rodape.facebook" maxlength="50" autocapitalize="off"></label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Google (SEO local)</legend>
+            <div class="grade-3">
+              <label class="campo"><span class="campo__rotulo">Cidade</span>
+                <input type="text" data-campo="seo.cidade" maxlength="60"></label>
+              <label class="campo"><span class="campo__rotulo">UF</span>
+                <input type="text" data-campo="seo.estado" maxlength="2" autocapitalize="characters"></label>
+              <label class="campo"><span class="campo__rotulo">CEP</span>
+                <input type="text" data-campo="seo.cep" maxlength="9" inputmode="numeric"></label>
+            </div>
+            <label class="campo"><span class="campo__rotulo">Horários no formato do Google</span>
+              <textarea data-campo="seo.horarios" data-tipo="linhas" rows="2" spellcheck="false"></textarea>
+              <span class="campo__dica">Uma linha por faixa. Dias em inglês (Mo Tu We Th Fr Sa Su), ex.: "Mo-Fr 09:00-19:00".</span></label>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= Editor de bolo ================= -->
+  <dialog id="dialogoBolo" class="dialogo" aria-labelledby="tituloDialogo">
+    <form id="formBolo" class="dialogo__corpo" method="dialog" novalidate>
+      <header class="dialogo__topo">
+        <h2 id="tituloDialogo">Bolo</h2>
+        <button class="btn-icone" type="button" data-fechar aria-label="Fechar">✕</button>
+      </header>
+
+      <div class="dialogo__rolagem">
+        <div class="foto-editor">
+          <div id="molduraFoto" class="foto-editor__moldura">
+            <img id="previaFoto" alt="" draggable="false">
+            <span id="semFoto" class="foto-editor__vazio">Sem foto</span>
+          </div>
+          <p id="dicaEnquadrar" class="campo__dica" hidden>Arraste a foto para ajustar o enquadramento (4:3).</p>
+          <label class="btn btn--secundario btn--largo">
+            <input id="campoFoto" type="file" accept="image/*" hidden>
+            <span id="rotuloFoto">Escolher foto</span>
+          </label>
+        </div>
+
+        <label class="campo"><span class="campo__rotulo">Nome *</span>
+          <input id="boloNome" type="text" maxlength="60" required></label>
+
+        <div class="grade-2">
+          <label class="campo"><span class="campo__rotulo">Preço (R$) *</span>
+            <input id="boloPreco" type="text" inputmode="decimal" placeholder="35,00" required></label>
+          <label class="campo"><span class="campo__rotulo">Categoria *</span>
+            <select id="boloCategoria" required></select></label>
+        </div>
+
+        <label class="interruptor">
+          <input id="boloDisponivel" type="checkbox">
+          <span class="interruptor__trilho" aria-hidden="true"></span>
+          <span>Disponível para pedido</span>
+        </label>
+
+        <label class="campo"><span class="campo__rotulo">Selo de destaque</span>
+          <input id="boloDestaque" type="text" maxlength="24" placeholder='Ex.: "Mais pedido" (vazio = sem selo)'></label>
+
+        <label class="campo"><span class="campo__rotulo">Descrição curta</span>
+          <textarea id="boloDescricao" rows="2" maxlength="140"></textarea>
+          <span class="campo__dica">Aparece no card do cardápio.</span></label>
+
+        <label class="campo"><span class="campo__rotulo">Detalhes</span>
+          <textarea id="boloDetalhes" rows="4" maxlength="600"></textarea>
+          <span class="campo__dica">Texto maior, exibido ao abrir o bolo.</span></label>
+
+        <p id="boloId" class="campo__dica"></p>
+        <p id="erroBolo" class="erro" role="alert" hidden></p>
+      </div>
+
+      <footer class="dialogo__rodape">
+        <button id="btnExcluirBolo" class="btn btn--perigo btn--p" type="button">Excluir</button>
+        <button id="btnDuplicarBolo" class="btn btn--fantasma btn--p" type="button">Duplicar</button>
+        <span class="espaco"></span>
+        <button id="btnSalvarBolo" class="btn btn--primario" type="submit">Salvar</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- ================= Modelos ================= -->
+  <template id="modeloBolo">
+    <li class="item">
+      <button class="alca" type="button" aria-label="Mover">⠿</button>
+      <img class="item__foto" alt="" width="64" height="48" loading="lazy">
+      <button class="item__info" type="button">
+        <span class="item__nome"></span>
+        <span class="item__meta"></span>
+      </button>
+      <label class="interruptor interruptor--p" title="Disponível">
+        <input class="item__disponivel" type="checkbox">
+        <span class="interruptor__trilho" aria-hidden="true"></span>
+      </label>
+    </li>
+  </template>
+
+  <template id="modeloCategoria">
+    <li class="item">
+      <button class="alca" type="button" aria-label="Mover">⠿</button>
+      <input class="item__campo" type="text" maxlength="40" aria-label="Nome da categoria">
+      <span class="item__meta item__contagem"></span>
+      <button class="btn-icone item__excluir" type="button" aria-label="Excluir categoria">🗑</button>
+    </li>
+  </template>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

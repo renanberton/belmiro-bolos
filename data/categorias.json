@@ -1,0 +1,22 @@
+[
+  {
+    "id": "tradicionais",
+    "nome": "Tradicionais"
+  },
+  {
+    "id": "com-cobertura",
+    "nome": "Com cobertura"
+  },
+  {
+    "id": "vulcao",
+    "nome": "Vulcão"
+  },
+  {
+    "id": "recheados",
+    "nome": "Recheados"
+  },
+  {
+    "id": "especiais",
+    "nome": "Especiais"
+  }
+]

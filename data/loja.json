@@ -1,0 +1,27 @@
+{
+  "nomeLoja": "Belmiro Bolos",
+  "whatsapp": "5513991173134",
+  "mensagemContato": "Olá, Belmiro Bolos! Gostaria de tirar uma dúvida.",
+  "quantidadeMaxima": 20,
+  "rodape": {
+    "slogan": "Bolos caseiros feitos com carinho, do forno direto para a sua mesa.",
+    "endereco": "R. Carvalho de Mendonça, 382 - Vila Belmiro",
+    "telefone": "(13) 2202-1187",
+    "horario": [
+      "Seg. a sex.: 9h às 19h",
+      "Sábado: 8h30 às 19h",
+      "Domingo: fechado"
+    ],
+    "instagram": "belmirobolosoficial",
+    "facebook": "belmirobolos"
+  },
+  "seo": {
+    "cidade": "Santos",
+    "estado": "SP",
+    "cep": "11070-101",
+    "horarios": [
+      "Mo-Fr 09:00-19:00",
+      "Sa 08:30-19:00"
+    ]
+  }
+}
