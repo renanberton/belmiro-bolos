@@ -1,8 +1,10 @@
 /**
  * BELMIRO BOLOS — lógica do cardápio, carrinho e envio pelo WhatsApp.
  * Normalmente NÃO é necessário editar este arquivo:
- *   - dados da loja  -> js/config.js
- *   - produtos       -> data/produtos.json (editado pelo painel /admin)
+ *   - dados da loja  -> data/loja.json
+ *   - categorias     -> data/categorias.json
+ *   - produtos       -> data/produtos.json
+ * Os três são editados pelo painel /admin.
  *
  * Segurança: todo texto é inserido com textContent (nunca innerHTML),
  * o carrinho salvo é revalidado contra o catálogo e os preços sempre
@@ -11,25 +13,33 @@
 (async function () {
   "use strict";
 
-  const CONFIG = window.BB_CONFIG;
+  const [loja, categorias, catalogo] = await Promise.all([
+    carregarJson("data/loja.json", {}),
+    carregarJson("data/categorias.json", []),
+    carregarJson("data/produtos.json", []),
+  ]);
+  // "todos" é uma categoria especial (mostra tudo) e não fica no JSON
+  const CONFIG = {
+    ...loja,
+    categorias: [{ id: "todos", nome: "Todos" }, ...(Array.isArray(categorias) ? categorias : [])],
+  };
   const CHAVE_CARRINHO = "belmiro-bolos:carrinho:v1";
   const QTD_MAX = CONFIG.quantidadeMaxima || 20;
 
   // ---------- Catálogo ----------
-  const produtos = (await carregarProdutos()).filter(validarProduto).map(Object.freeze);
+  const produtos = (Array.isArray(catalogo) ? catalogo : []).filter(validarProduto).map(Object.freeze);
   const produtosPorId = new Map(produtos.map((p) => [p.id, p]));
   const nomesCategorias = new Map(CONFIG.categorias.map((c) => [c.id, c.nome]));
 
   // no-cache: revalida a cada visita, para mudanças de preço/disponibilidade aparecerem na hora
-  async function carregarProdutos() {
+  async function carregarJson(caminho, padrao) {
     try {
-      const resposta = await fetch("data/produtos.json", { cache: "no-cache" });
+      const resposta = await fetch(caminho, { cache: "no-cache" });
       if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
-      const dados = await resposta.json();
-      return Array.isArray(dados) ? dados : [];
+      return await resposta.json();
     } catch (erro) {
-      console.error("[Belmiro Bolos] Não foi possível carregar o cardápio:", erro);
-      return [];
+      console.error(`[Belmiro Bolos] Não foi possível carregar ${caminho}:`, erro);
+      return padrao;
     }
   }
 
